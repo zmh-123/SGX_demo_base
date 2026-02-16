@@ -1,0 +1,19 @@
+# 签名私钥不传
+*_private.pem
+
+
+# 临时文件
+.vs/
+*.obj
+*.pdb
+*.ilk
+*.ipch
+*.idb
+*.tlog/
+*.log
+*.recipe
+*.Build.CppClean.log
+*.vcxproj.FileListAbsolute.txt
+
+# NuGet 包
+packages/

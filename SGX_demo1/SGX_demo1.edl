@@ -1,0 +1,31 @@
+﻿enclave {
+    from "sgx_tstdc.edl" import *;
+
+    trusted {
+        /* * [in]: 输入参数，数据从 App 传入 Enclave
+         * [out]: 输出参数，数据从 Enclave 传回 App
+         * string: 告诉编译器这是以 null 结尾的字符串
+         * size=16: MAC 标签固定是 16 字节
+         */
+        public sgx_status_t encrypt_message([in, string] const char* str, 
+                                            [out, size=len] uint8_t* output_cipher, 
+                                            [out, size=16] uint8_t* output_mac,
+                                            size_t len);
+
+        /* ✅ 新增：解密接口 */
+        /* [in] cipher: 输入的密文 */
+        /* [in] mac: 输入的验证标签 (必须匹配才能解密) */
+        /* [out] output_str: 解密后吐出来的明文 */
+        public sgx_status_t decrypt_message([in, size=len] const uint8_t* cipher,
+                                            size_t len,
+                                            [in, size=16] const uint8_t* mac,
+                                            [out, size=len] char* output_str);
+    };
+
+
+
+    untrusted {
+        /* 暂时不需要 OCALL */
+    };
+
+};
