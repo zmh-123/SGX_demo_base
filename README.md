@@ -120,7 +120,7 @@ include粘贴到这里：
 
 bin粘到这里（修复链接错误）：
 
-![bin](.\images\bin.png)
+![bin](./images/bin.png)
 
 ### 5.链接依赖项
 
